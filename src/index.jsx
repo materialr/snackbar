@@ -6,6 +6,8 @@ import '@material/snackbar/mdc-snackbar.scss';
 
 import snackbarFoundation from './foundation';
 
+export const Empty = () => null;
+
 class Snackbar extends React.Component {
   constructor(props) {
     super(props);
@@ -149,11 +151,11 @@ Snackbar.defaultProps = {
   actionHandler: undefined,
   actionText: undefined,
   alignStart: false,
-  className: undefined,
+  className: '',
   multiline: false,
   multilineActionOnBottom: false,
-  onHide: () => {},
-  onShow: () => {},
+  onHide: Empty,
+  onShow: Empty,
   timeout: 2750,
 };
 
