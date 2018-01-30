@@ -6,15 +6,21 @@ export const addClass = updateClassNames => (className) => {
   updateClassNames(classNames);
 };
 
-export const deregisterInteractionHandler = element => (type, handler) =>
+export const deregisterInteractionHandler = (element, type) => handler =>
   element.removeEventListener(type, handler);
 
-export const registerInteractionHandler = element => (type, handler) =>
+export const deregisterInteractionHandlerAny = element => (type, handler) =>
+  deregisterInteractionHandler(element, type)(handler);
+
+export const registerInteractionHandler = (element, type) => handler =>
   element.addEventListener(
     type,
     handler,
     PASSIVE_EVENT_LISTENERS.includes(type) ? { passive: true } : null,
   );
+
+export const registerInteractionHandlerAny = element => (type, handler) =>
+  registerInteractionHandler(element, type)(handler);
 
 export const removeClass = updateClassNames => (className) => {
   classNames = classNames.filter(currentClassName => currentClassName !== className);

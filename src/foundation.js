@@ -3,7 +3,9 @@ import { MDCSnackbarFoundation } from '@material/snackbar';
 import {
   addClass,
   deregisterInteractionHandler,
+  deregisterInteractionHandlerAny,
   registerInteractionHandler,
+  registerInteractionHandlerAny,
   removeClass,
   setActionAriaHidden,
   setActionText,
@@ -27,26 +29,18 @@ export default ({
   updateSnackbarText,
 }) => new MDCSnackbarFoundation({
   addClass: addClass(updateClassNames),
-  deregisterActionClickHandler:
-    handler => deregisterInteractionHandler(elementActionButton)('click', handler),
-  deregisterCapturedBlurHandler:
-    handler => deregisterInteractionHandler(elementActionButton)('blur', handler),
-  deregisterCapturedInteractionHandler: deregisterInteractionHandler(document.body),
-  deregisterTransitionEndHandler:
-    handler => deregisterInteractionHandler(elementSnackbar)('transitionend', handler),
-  deregisterVisibilityChangeHandler:
-    handler => deregisterInteractionHandler(document)('visibilitychange', handler),
+  deregisterActionClickHandler: deregisterInteractionHandler(elementActionButton, 'click'),
+  deregisterCapturedBlurHandler: deregisterInteractionHandler(elementActionButton, 'blur'),
+  deregisterCapturedInteractionHandler: deregisterInteractionHandlerAny(document.body),
+  deregisterTransitionEndHandler: deregisterInteractionHandler(elementSnackbar, 'transitionend'),
+  deregisterVisibilityChangeHandler: deregisterInteractionHandler(document, 'visibilitychange'),
   notifyHide,
   notifyShow,
-  registerActionClickHandler:
-    handler => registerInteractionHandler(elementActionButton)('click', handler),
-  registerCapturedBlurHandler:
-    handler => registerInteractionHandler(elementActionButton)('blur', handler),
-  registerCapturedInteractionHandler: registerInteractionHandler(document.body),
-  registerTransitionEndHandler:
-    handler => registerInteractionHandler(elementSnackbar)('transitionend', handler),
-  registerVisibilityChangeHandler:
-    handler => registerInteractionHandler(document)('visibilitychange', handler),
+  registerActionClickHandler: registerInteractionHandler(elementActionButton, 'click'),
+  registerCapturedBlurHandler: registerInteractionHandler(elementActionButton, 'blur'),
+  registerCapturedInteractionHandler: registerInteractionHandlerAny(document.body),
+  registerTransitionEndHandler: registerInteractionHandler(elementSnackbar, 'transitionend'),
+  registerVisibilityChangeHandler: registerInteractionHandler(document, 'visibilitychange'),
   removeClass: removeClass(updateClassNames),
   setActionAriaHidden: setActionAriaHidden(updateActionButtonAriaHidden),
   setActionText: setActionText(updateActionButtonText),
