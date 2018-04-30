@@ -160,10 +160,10 @@ test('Shows the MDCSnackbar component on mount', () => {
   );
   const expected = {
     actionHandler: ACTION_HANDLER,
+    actionOnBottom: MULTILINE_ACTION_ON_BOTTOM,
     actionText: ACTION_TEXT,
     message: MESSAGE,
     multiline: MULTILINE,
-    multilineActionOnBottom: MULTILINE_ACTION_ON_BOTTOM,
     timeout: TIMEOUT,
   };
 
