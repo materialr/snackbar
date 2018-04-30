@@ -56,10 +56,10 @@ class Snackbar extends React.Component {
     } = this.props;
     this.snackbar.show({
       actionHandler,
+      actionOnBottom: multilineActionOnBottom,
       actionText,
       message,
       multiline,
-      multilineActionOnBottom,
       timeout,
     });
   }
