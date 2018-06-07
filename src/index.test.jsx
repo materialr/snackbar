@@ -171,3 +171,16 @@ test('Shows the MDCSnackbar component on mount', () => {
 
   expect(actual).toEqual(expected);
 });
+
+test('Passes through additional props', () => {
+  const DATA_QA = 'DATA_QA';
+  const wrapper = shallow(
+    <Snackbar data-qa={DATA_QA} message={MESSAGE} />,
+    { disableLifecycleMethods: true },
+  );
+  const expected = DATA_QA;
+
+  const actual = wrapper.props()['data-qa'];
+
+  expect(actual).toBe(expected);
+});
