@@ -64,13 +64,29 @@ class Snackbar extends React.Component {
     });
   }
   render() {
-    const { getClassNames } = this;
+    const {
+      getClassNames,
+      props: {
+        actionHandler,
+        actionText,
+        alignStart,
+        className,
+        message,
+        multiline,
+        multilineActionOnBottom,
+        onHide,
+        onShow,
+        timeout,
+        ...props
+      },
+    } = this;
     return (
       <div
         aria-live="assertive"
         aria-atomic="true"
         className={getClassNames()}
         ref={(elementRoot) => { this.elementRoot = elementRoot; }}
+        {...props}
       >
         <div className="mdc-snackbar__text" />
         <div className="mdc-snackbar__action-wrapper">
